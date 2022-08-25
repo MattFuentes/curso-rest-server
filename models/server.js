@@ -5,7 +5,8 @@ class Server {
 
     constructor() {
         this.app = express();
-        this.userPath = '/api/usuarios'
+        this.flyPath = '/api/usuarios'
+        this.userPath = '/api/vuelos'
         this.port = process.env.PORT
         // Connect DB
         this.connectDB();
@@ -29,7 +30,8 @@ class Server {
 
     routes() {
         //Middleware Conditional
-        this.app.use(this.userPath, require('../routes/user'))
+         this.app.use(this.userPath, require('../routes/fly'))
+         this.app.use(this.flyPath, require('../routes/user'))
     }
 
     listen() {
